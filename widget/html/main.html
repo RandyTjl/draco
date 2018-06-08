@@ -259,6 +259,7 @@
             <div class="menu video" tapmode="active" onclick="fnChange(1)">视频</div>
             <div class="menu gambit" tapmode="active" onclick="fnChange(2)">话题</div>
             <div class="menu my" tapmode="active" onclick="fnChange(3)">我的</div>
+            <div class="menu my" tapmode="active" onclick="three()">3D</div>
         </footer>
     </body>
     <script type="text/javascript" src="../script/api.js"></script>
@@ -582,6 +583,14 @@
                     subType:"from_right",
                     duration:100
                 }
+            });
+        }
+
+        //3D图
+        function three() {
+            api.openWin({
+                name: 'three',
+                url:  '/three.html'
             });
         }
     </script>
