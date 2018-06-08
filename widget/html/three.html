@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>立方体</title>
-    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../css/api.css" />-->
     <script src="http://sqimg.qq.com/qq_product_operations/mma/javanli_test/lib/three.min.js"></script>
     <style type="text/css">
         html, body {
@@ -23,14 +23,12 @@
 </html>
 
 <script>
+    alert(1);
     var camera, scene, renderer;
     var geometry, material, mesh;
     init();
     animate();
-
-
-
-
+   
     function init() {
 
         camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
@@ -62,3 +60,4 @@
         renderer.render( scene, camera );
 
     }
+</script>
