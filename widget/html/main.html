@@ -34,20 +34,10 @@
 <script type="text/javascript" src="../script/vue/vue.js"></script>
 <script>
     apiready = function(){
-        var header = $api.byId('footer');
-        $api.fixStatusBar(header);
-        var headerPos = $api.offset(header);
-        var body_h = $api.offset($api.dom('body')).h;
         api.openFrame({
-            name: name,
-            url: url,
+            name: 'home',
+            url: "/home.html",
             bounces: true,
-            rect: {
-                x: 0,
-                y: headerPos.h,
-                w: 'auto',
-                h: 'auto'
-            }
         })
     }
 
