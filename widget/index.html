@@ -11,12 +11,10 @@
     <body>
     </body>
     <script type="text/javascript" src="./script/api.js"></script>
-    <script type="text/javascript" src="./script/local.js"></script>
     <script type="text/javascript">
         apiready = function() {
-            //fnOpenDatabase();
             fnOpenMain();
-            fnOpenAd();
+            loginStatus();
         };
 
         function fnOpenMain() {
@@ -30,20 +28,22 @@
             });
         };
 
-        function fnOpenAd() {
-            api.openWin({
-                name: 'ad',
-                url: './html/ad.html',
-                bgColor: './image/ad1.png',
-                bounces: false,
-                vScrollBarEnabled: false,
-                hScrollBarEnabled: false,
-                slidBackEnabled: false,
-                animation: {
-                    type: 'none'
-                }
-            });
-        };
+        //登录状态判断
+        function loginStatus() {
+            var token = 1;
+            if(token == 1){
+                api.openWin({
+                    name: 'commen',
+                    url: 'main/common.html',
+                    pageParam: {
+                        name: 'login',
+                        url: 'login.html',
+                        title: '登录'
+                    }
+                })
+            }
+        }
+
     </script>
 
-</html>
+
