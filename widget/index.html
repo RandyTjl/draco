@@ -13,7 +13,7 @@
     <script type="text/javascript" src="./script/api.js"></script>
     <script type="text/javascript">
         apiready = function() {
-            fnOpenMain();
+           
             loginStatus();
         };
 
@@ -37,11 +37,13 @@
                     url: './html/main/common_header.html',
                     pageParam: {
                         name: 'login',
-                        url: 'login.html',
+                        url: './html/auth/login.html',
                         title: '登录'
                     }
                 })
-            }
+            }else{
+				fnOpenMain();
+			}
         }
 
     </script>
