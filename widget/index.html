@@ -13,11 +13,12 @@
     <script type="text/javascript" src="./script/api.js"></script>
     <script type="text/javascript">
         apiready = function() {
-           
-            loginStatus();
+            fnOpenMain();
+            //loginStatus();
         };
 
         function fnOpenMain() {
+      
             api.openWin({
                 name: 'main',
                 url: './html/main.html',
@@ -30,7 +31,7 @@
 
         //登录状态判断
         function loginStatus() {
-            var token = 1;
+            var token = 2;
             if(token == 1){
                 api.openWin({
                     name: 'commen_header',
@@ -42,10 +43,8 @@
                     }
                 })
             }else{
-				fnOpenMain();
-			}
+      				fnOpenMain();
+      			}
         }
 
     </script>
-
-

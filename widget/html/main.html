@@ -34,20 +34,21 @@
 <script type="text/javascript" src="../script/vue/vue.js"></script>
 <script>
     apiready = function(){
-		var body_h = $api.offset($api.dom('body')).h;
-		var foot_h = $api.offset($api.dom('#footer')).h;
-		var h =  body_h - foot_h;
-        api.openFrame({
-            name: 'home',
-            url: "./home.html",
-            bounces: true,
-			rect: {
-				x: 0,
-				y: 0,
-				w: 'auto',
-				h: h,
-			},
-        })
+  		var body_h = $api.offset($api.dom('body')).h;
+  		var foot_h = $api.offset($api.dom('#footer')).h;
+  		var h =  body_h - foot_h;
+
+          api.openFrame({
+              name: 'home',
+              url: "./home.html",
+              bounces: true,
+        			rect: {
+        				x: 0,
+        				y: 0,
+        				w: 'auto',
+        				h: h,
+        			},
+          })
     }
 
 
