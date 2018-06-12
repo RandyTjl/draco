@@ -8,80 +8,84 @@
 </head>
 <link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
 <body>
+
 <footer class="aui-bar aui-bar-tab" id="footer">
-    <div class="aui-bar-tab-item aui-active" tapmode onclick="changeBar(1)">
+    <div class="aui-bar-tab-item aui-active" tapmode onclick="changeBar(0)">
         <i class="aui-iconfont aui-icon-home"></i>
         <div class="aui-bar-tab-label">首页</div>
     </div>
-    <div class="aui-bar-tab-item" tapmode onclick="changeBar(2)">
+    <div class="aui-bar-tab-item" tapmode onclick="changeBar(1)">
         <i class="aui-iconfont aui-icon-star"></i>
         <div class="aui-bar-tab-label">收藏</div>
     </div>
-    <div class="aui-bar-tab-item" tapmode onclick="changeBar(3)">
-        <div class="aui-badge">99</div>
-        <i class="aui-iconfont aui-icon-cart"></i>
-        <div class="aui-bar-tab-label">购物车</div>
-    </div>
-    <div class="aui-bar-tab-item" tapmode onclick="changeBar(4)">
+    <div class="aui-bar-tab-item" tapmode onclick="changeBar(2)">
         <div class="aui-dot"></div>
         <i class="aui-iconfont aui-icon-my"></i>
         <div class="aui-bar-tab-label">我的</div>
     </div>
 </footer>
-
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/vue/vue.js"></script>
 <script>
     apiready = function(){
-  		var body_h = $api.offset($api.dom('body')).h;
-  		var foot_h = $api.offset($api.dom('#footer')).h;
-  		var h =  body_h - foot_h;
-
-          api.openFrame({
-              name: 'home',
-              url: "./home.html",
-              bounces: true,
-        			rect: {
-        				x: 0,
-        				y: 0,
-        				w: 'auto',
-        				h: h,
-        			},
-          })
+  		changeBar(0);
     }
-	
-	function changeBar(){
-		var body_h = $api.offset($api.dom('body')).h;
+
+	function changeBar(index){
+		var winHeight = api.winHeight;
 		var foot_h = $api.offset($api.dom('#footer')).h;
-		var h =  body_h - foot_h;
-		api.openFrameGroup({
-			name:"menu",
-			scrollEnabled: true,
-			rect: {
-				x: 0,
-				y: 0,
-				w: 'auto',
-				h: h
-			},
-			frames: [{
-				name: 'home',
-				url: 'home.html',
-				bgColor: '#fff'
-			}, 
-			{
-				name: 'home',
-				url: 'home.html',
-				bgColor: '#faf'
-			},{
-				name: 'user',
-				url: 'user.html',
-				bgColor: '#fff'
-			}]
-		}, function(ret, err) {
-			var index = ret.index;
-		});		
+		var h =  winHeight - foot_h;
+		var rect = {
+            x: 0,
+            y: 0,
+            w: 'auto',
+            h: h
+        };
+    var bgColor =  '#fff';
+		switch(index){
+            case 0:
+                name = "home";
+                url = './home.html';
+                break;
+            case 1:
+                  name = "collection";
+                  url = "./collection.html";
+                  break;
+            case 2:
+                name = "user";
+                url = "./user.html";
+                break;
+            default:
+                name = "home";
+                url = './home.html';
+                break;
+        }
+        changeStyle(index);
+
+		api.openFrame({
+            name:name,
+            url:url,
+            rect:rect,
+            pageParam: {
+              foot_h: foot_h
+          }
+        });
+
 	}
+
+  function changeStyle(index){
+    var menu = $api.domAll($api.dom('#footer'), '.aui-bar-tab-item');
+    console.log(menu.length);
+    for(i=0;i<menu.length;i++){
+      if(i == index){
+        $api.addCls(menu[i],'aui-active');
+      }else{
+        $api.removeCls(menu[i],'aui-active');
+      }
+    }
+
+  }
 
 </script>
 </html>

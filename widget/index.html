@@ -14,12 +14,12 @@
 	<script type="text/javascript" src="./script/common.js"></script>
     <script type="text/javascript">
         apiready = function() {
-            fnOpenMain();
-            //loginStatus();
+            //fnOpenMain();
+            loginStatus();
         };
 
         function fnOpenMain() {
-      
+
             api.openWin({
                 name: 'main',
                 url: './html/main.html',
@@ -33,14 +33,14 @@
         //登录状态判断
         function loginStatus() {
            var token = getRandnum(1,2);
-
+            token =1;
             if(token == 1){
                 api.openWin({
                     name: 'commen_header',
-                    url: './html/main/common_header.html',
+                    url: './html/common_header.html',
                     pageParam: {
                         name: 'login',
-                        url: '../auth/login.html',
+                        url: './login.html',
                         title: '登录'
                     }
                 })
