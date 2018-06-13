@@ -21,10 +21,23 @@
 <script type="text/javascript" src="../script/api.js"></script>
 <script>
 apiready = function(){
-
+	openCollection
 }
 function doSearch(){
 
+}
+function openCollection(){
+  var foot_h = api.pageParam.foot_h;
+  api.openFrame({
+    name:"collection",
+    url:"./collection.html",
+    rect: {
+        x: 0,
+        y: 0,
+        w: 'auto',
+        h: 'auto'
+    }
+  })
 }
 </script>
 </html>
