@@ -27,8 +27,10 @@ function doSearch(){
 
 }
 function openCollection(){
+  var winHeight = api.winHeight; 
   var foot_h = api.pageParam.foot_h;
   var search_h = $api.offset($api.byId("search")).h;
+  var h = winHeight-foot_h-search_h;
   api.openFrame({
     name:"collection",
     url:"./collection.html",
@@ -36,7 +38,7 @@ function openCollection(){
         x: 0,
         y: search_h,
         w: 'auto',
-        h: 'auto'
+        h: h
     }
   })
 }
