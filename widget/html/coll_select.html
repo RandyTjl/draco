@@ -15,25 +15,26 @@
             <input type="search" placeholder="请输入搜索内容" id="search-input">
         </form>
     </div>
-    <div class="aui-searchbar-cancel" tapmod>取消</div>
+    <!-- <div class="aui-searchbar-cancel" tapmod>取消</div> -->
 </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script>
 apiready = function(){
-	openCollection
+	openCollection();
 }
 function doSearch(){
 
 }
 function openCollection(){
   var foot_h = api.pageParam.foot_h;
+  var search_h = $api.offset($api.byId("search")).h;
   api.openFrame({
     name:"collection",
     url:"./collection.html",
     rect: {
         x: 0,
-        y: 0,
+        y: search_h,
         w: 'auto',
         h: 'auto'
     }
