@@ -1013,7 +1013,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .aui-list .aui-list-item-label-icon {
 	color: #212121;
     width: 35%;
-    min-width: 1.5rem;
+    min-width: 1.8rem;
     margin: 0;
     padding: 0;
     padding-right: 0.25rem;

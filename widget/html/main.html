@@ -67,16 +67,17 @@
             name:name,
             url:url,
             rect:rect,
+            reload:true,
             pageParam: {
               foot_h: foot_h
-          }
+          },
+          overScrollMode:"scrolls",
         });
 
 	}
 
   function changeStyle(index){
     var menu = $api.domAll($api.dom('#footer'), '.aui-bar-tab-item');
-    console.log(menu.length);
     for(i=0;i<menu.length;i++){
       if(i == index){
         $api.addCls(menu[i],'aui-active');
