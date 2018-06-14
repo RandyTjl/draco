@@ -1082,7 +1082,7 @@ input[type="search"]::-webkit-search-cancel-button {
         background-image: linear-gradient(0,#dddddd,#dddddd 50%,transparent 50%);
 	}
 	.aui-list .aui-list-item {
-		border: none;
+	
         background-size: 100% 1px;
 		background-repeat: no-repeat;
 		background-position: bottom;
