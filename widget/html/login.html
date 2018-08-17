@@ -18,7 +18,7 @@
                       <i class="aui-iconfont aui-icon-mail"></i>
                   </div>
                   <div class="aui-list-item-input">
-                      <input type="text" placeholder="邮箱地址">
+                      <input type="text" placeholder="邮箱地址" name="email" id="email">
                   </div>
               </div>
           </li>
@@ -28,7 +28,7 @@
                       <i class="aui-iconfont aui-icon-lock"></i>
                   </div>
                   <div class="aui-list-item-input">
-                      <input type="password" placeholder="密码（6-20位英文或数字）">
+                      <input type="password" placeholder="密码（6-20位英文或数字）" name="password" id="password">
                   </div>
                   <div class="aui-list-item-label-icon" style="min-width:2.0rem">
                       |<span  class="font" onclick="forget_password()">忘记密码</span>
@@ -44,9 +44,21 @@
     <a  href="#" style="font-size:1em">立即注册</a>
   </div>
 </div>
+<script language=javascript src='/script/config.js'></script>
 <script>
 apiready = function(){
-
+    var url = "/api/v1/login";
+    var data={
+        email:$("#email").val(),
+        password:$("#password").val()
+    };
+    ajaxForm(url,"POST",data,function (ret,err) {
+        if(ret.statusCode){
+            api.alert();
+        }else{
+            api.alert({ title: '登录', msg: '登录失败'});
+        }
+    });
 }
 function forget_password(){
   api.openWin({
