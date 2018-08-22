@@ -50,10 +50,14 @@ function fnCheckUpdate () {
  */
 function ajaxForm(url,method,data,callback) {
 	url = config['url']+url;
+	headers = {
+        "apiToken":getApiToken()
+    };
     api.ajax({
         url: url,
         method: method,
-        data: data
+        data: data,
+        headers:headers,
     }, function(ret, err) {
     	if(callback){
     		callback(ret,err);
@@ -78,23 +82,44 @@ function ajaxForm(url,method,data,callback) {
 function ajaxJson(url,method,data,callback) {
     // 提交JSON数据
     url = config['url']+url;
+    headers = {
+        "apiToken":getApiToken(),
+        'Content-Type': 'application/json;charset=utf-8'
+    };
     api.ajax({
         url: url,
         method: 'post',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        data: {
-            body: {
-                name: 'haha'
+        headers: headers,
+        data: data
+    }, function(ret, err) {
+        if(callback){
+            callback(ret,err);
+        }else{
+            if (ret) {
+                api.alert({ msg: JSON.stringify(ret) });
+            } else {
+                api.alert({ msg: JSON.stringify(err) });
             }
         }
-    }, function(ret, err) {
-        if (ret) {
-            api.alert({ msg: JSON.stringify(ret) });
-        } else {
-            api.alert({ msg: JSON.stringify(err) });
-        }
     });
+}
+
+function getApiToken() {
+    apiToken = $api.getStorage("apiToken");
+    if(apiToken == '' || apiToken == undefined){
+        api.toast({
+            msg: 'token失效',
+            duration: 2000,
+            location: 'middle'
+        });
+        api.openWin({
+            name: 'login',
+            url: './login.html',
+            animation:{
+                type:'flip',
+                subType:'from_right'
+            }
+        });
+    }
 }
 

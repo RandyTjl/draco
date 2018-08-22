@@ -32,8 +32,9 @@
 
         //登录状态判断
         function loginStatus() {
-           var token = getRandnum(1,2);
-            token =1;
+          var apiToken = getApiToken();
+            ajaxJson()
+
             if(token == 1){
                 api.openWin({
                     name: 'login_header',
