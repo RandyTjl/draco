@@ -52,9 +52,11 @@ apiready = function(){
         email:$("#email").val(),
         password:$("#password").val()
     };
-    ajaxForm(url,"POST",data,function (ret,err) {
-        if(ret.statusCode){
-            api.alert();
+    ajaxForm(url,"GET",data,function (ret,err) {
+        if(ret.Code == 200){
+            $api.setStorage('apiToken',ret.data.api_token);
+            $api.setStorage('user',ret.data.user);
+
         }else{
             api.alert({ title: '登录', msg: '登录失败'});
         }

@@ -18,36 +18,31 @@
             loginStatus();
         };
 
-        function fnOpenMain() {
-
-            api.openWin({
-                name: 'main',
-                url: './html/main.html',
-                bounces: false,
-                vScrollBarEnabled: false,
-                hScrollBarEnabled: false,
-                slidBackEnabled: false
-            });
-        };
 
         //登录状态判断
         function loginStatus() {
           var apiToken = getApiToken();
-            ajaxJson()
+          var url = "/auth/verifyApiToken";
+          var method = "POST";
+          var data = {
+            "apiToken":apiToken,
+          };
+            ajaxJson(url,method,data,function (msg) {
+                if(msg.status){
+                    fnOpenMain();
+                }else{
+                    api.openWin({
+                        name: 'login_header',
+                        url: './html/login_header.html',
+                        pageParam: {
+                            name: 'login',
+                            url: './login.html',
+                            title: '登录'
+                        }
+                    })
+                }
+            })
 
-            if(token == 1){
-                api.openWin({
-                    name: 'login_header',
-                    url: './html/login_header.html',
-                    pageParam: {
-                        name: 'login',
-                        url: './login.html',
-                        title: '登录'
-                    }
-                })
-            }else{
-      				fnOpenMain();
-      			}
         }
 
     </script>

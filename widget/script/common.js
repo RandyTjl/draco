@@ -104,6 +104,9 @@ function ajaxJson(url,method,data,callback) {
     });
 }
 
+/**
+ * 获得apiToken
+ */
 function getApiToken() {
     apiToken = $api.getStorage("apiToken");
     if(apiToken == '' || apiToken == undefined){
@@ -122,4 +125,19 @@ function getApiToken() {
         });
     }
 }
+
+/**
+ * 打开首页
+ */
+function fnOpenMain() {
+
+    api.openWin({
+        name: 'main',
+        url: './html/main.html',
+        bounces: false,
+        vScrollBarEnabled: false,
+        hScrollBarEnabled: false,
+        slidBackEnabled: false
+    });
+};
 
