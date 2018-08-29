@@ -28,7 +28,7 @@
             "apiToken":apiToken,
           };
             ajaxJson(url,method,data,function (ret,err) {
-                api.alert({ msg: ret});
+                api.alert({ msg: ret.status});
                 if(ret.status){
                     fnOpenMain();
                 }else{
