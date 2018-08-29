@@ -116,13 +116,14 @@ function getApiToken() {
             location: 'middle'
         });
         api.openWin({
-            name: 'login',
-            url: './login.html',
-            animation:{
-                type:'flip',
-                subType:'from_right'
+            name: 'login_header',
+            url: './html/login_header.html',
+            pageParam: {
+                name: 'login',
+                url: './login.html',
+                title: '登录'
             }
-        });
+        })
     }
 }
 
