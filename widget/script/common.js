@@ -1,4 +1,5 @@
 document.write("<script language=javascript src='./script/config.js'></script>");
+document.write("<script language=javascript src='./script/api.js'></script>");
 
 //获得随机整数
 function getRandnum(n,m){
@@ -110,7 +111,7 @@ function ajaxJson(url,method,data,callback) {
 function getApiToken() {
     apiToken = $api.getStorage("apiToken");
     if(apiToken == '' || apiToken == undefined){
-        api.toast({
+        $api.toast({
             msg: 'token失效',
             duration: 2000,
             location: 'middle'

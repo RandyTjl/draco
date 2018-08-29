@@ -11,7 +11,7 @@
     <body>
     </body>
     <script type="text/javascript" src="./script/api.js"></script>
-	  <script type="text/javascript" src="./script/common.js"></script>
+    <script type="text/javascript" src="./script/common.js"></script>
     <script type="text/javascript">
         apiready = function() {
             //fnOpenMain();
@@ -28,7 +28,6 @@
             "apiToken":apiToken,
           };
             ajaxJson(url,method,data,function (ret,err) {
-                api.alert({ msg: ret.status});
                 if(ret.status){
                     fnOpenMain();
                 }else{
