@@ -27,9 +27,9 @@
           var data = {
             "apiToken":apiToken,
           };
-            ajaxJson(url,method,data,function (msg) {
-                api.alert({ msg: msg});
-                if(msg.status){
+            ajaxJson(url,method,data,function (ret,err) {
+                api.alert({ msg: ret});
+                if(ret.status){
                     fnOpenMain();
                 }else{
                     api.openWin({
