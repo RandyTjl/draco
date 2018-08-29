@@ -49,8 +49,8 @@
 apiready = function(){
     var url = "/auth/login";
     var data={
-        email:$("#email").val(),
-        password:$("#password").val()
+        email:$api.val("#email"),
+        password:$api.val("#password")
     };
     ajaxForm(url,"GET",data,function (ret,err) {
         if(ret.Code == 200){
