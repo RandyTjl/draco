@@ -60,6 +60,7 @@ function ajaxForm(url,method,data,callback) {
         data: data,
         headers:headers,
     }, function(ret, err) {
+        api.alert({ title: '操作', msg: JSON.stringify(err)});
         if(ret.statusCode){
             callback(ret.body,err);
         }else{
