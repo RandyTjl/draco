@@ -55,6 +55,7 @@ apiready = function(){
             email:$api.val("#email"),
             password:$api.val("#password")
         };
+        api.alert({ title: '登录', msg: $api.val("#email")});
         ajaxForm(url,"GET",data,function (ret,err) {
             if(ret.Code == 200){
                 $api.setStorage('apiToken',ret.data.api_token);
