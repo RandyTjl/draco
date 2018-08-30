@@ -61,7 +61,7 @@ apiready = function(){
                 $api.setStorage('user',ret.data.user);
                 fnOpenMain();
             }else{
-                api.alert({ title: '登录', msg: '登录失败'});
+                api.alert({ title: '登录', msg: JSON.stringify(err)});
             }
         });
     })
