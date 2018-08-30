@@ -38,7 +38,7 @@
       </ul>
   </div>
   <div style="margin:0 1.5em">
-    <div class="aui-btn aui-btn-info aui-btn-block  ">提交</div>
+    <div class="aui-btn aui-btn-info aui-btn-block  " id="login">登陆</div>
   </div>
   <div class="aui-col-xs-12" style="text-align:center;margin-top:1em">
     <a  href="#" style="font-size:1em">立即注册</a>
@@ -46,22 +46,25 @@
 </div>
 <script language=javascript src='../script/config.js'></script>
 <script language=javascript src='../script/api.js'></script>
+<script language=javascript src='../script/common.js'></script>
 <script>
 apiready = function(){
-    var url = "/auth/login";
-    var data={
-        email:$api.val("#email"),
-        password:$api.val("#password")
-    };
-    ajaxForm(url,"GET",data,function (ret,err) {
-        if(ret.Code == 200){
-            $api.setStorage('apiToken',ret.data.api_token);
-            $api.setStorage('user',ret.data.user);
-
-        }else{
-            api.alert({ title: '登录', msg: '登录失败'});
-        }
-    });
+    $api.addEvt("#login",'click',function () {
+        var url = "/auth/login";
+        var data={
+            email:$api.val("#email"),
+            password:$api.val("#password")
+        };
+        ajaxForm(url,"GET",data,function (ret,err) {
+            if(ret.Code == 200){
+                $api.setStorage('apiToken',ret.data.api_token);
+                $api.setStorage('user',ret.data.user);
+                fnOpenMain();
+            }else{
+                api.alert({ title: '登录', msg: '登录失败'});
+            }
+        });
+    })
 }
 function forget_password(){
   api.openWin({
