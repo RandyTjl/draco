@@ -51,11 +51,6 @@ function fnCheckUpdate () {
  */
 function ajaxForm(url,method,data,callback) {
 	url = config['url']+url;
-    api.toast({
-        msg: url,
-        duration: 10000,
-        location: 'middle'
-    });
 	headers = {
         "apiToken":$api.getStorage("apiToken")
     };

@@ -1,5 +1,5 @@
 var config = new Array();
 
 config['db_name'] = "dianta";
-config['url'] = "47.95.238.197/api/v1";
+config['url'] = "http://47.95.238.197/api/v1";
 
