@@ -51,6 +51,7 @@ function fnCheckUpdate () {
  */
 function ajaxForm(url,method,data,callback) {
 	url = config['url']+url;
+    $api.toast(url,10000);
 	headers = {
         "apiToken":$api.getStorage("apiToken")
     };
@@ -60,7 +61,6 @@ function ajaxForm(url,method,data,callback) {
         data: data,
         headers:headers,
     }, function(ret, err) {
-        api.alert({ title: '操作失败', msg: JSON.stringify(ret)});
         if(ret.statusCode){
             callback(ret.body,err);
         }else{

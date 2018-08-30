@@ -23,11 +23,7 @@
         function loginStatus() {
             var apiToken = getApiToken();
             if(!apiToken){
-                api.toast({
-                    msg: 'token失效',
-                    duration: 3000,
-                    location: 'middle'
-                });
+
                 fnOpenLogin();
             }else{
                 var url = "/auth/verifyApiToken";
