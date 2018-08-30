@@ -55,13 +55,11 @@ apiready = function(){
             email:$api.val($api.byId('email')),
             password:$api.val($api.byId('password'))
         };
-        ajaxForm(url,"GET",data,function (ret,err) {
-            if(ret.Code == 200){
+        ajaxForm(url,"GET",data,function (ret) {
+            if(ret.code == 200){
                 $api.setStorage('apiToken',ret.data.api_token);
                 $api.setStorage('user',ret.data.user);
                 fnOpenMain();
-            }else{
-                api.alert({ title: '登录', msg: JSON.stringify(err)});
             }
         });
     })

@@ -60,7 +60,11 @@ function ajaxForm(url,method,data,callback) {
         data: data,
         headers:headers,
     }, function(ret, err) {
-        callback(ret,err);
+        if(ret.statusCode){
+            callback(ret.body,err);
+        }else{
+            api.alert({ title: '操作失败', msg: JSON.stringify(err)});
+        }
     });
 }
 
@@ -84,7 +88,11 @@ function ajaxJson(url,method,data,callback) {
         headers: headers,
         data: data
     }, function(ret, err) {
-        callback(ret,err);
+        if(ret.statusCode){
+            callback(ret.body,err);
+        }else{
+            api.alert({ title: '操作失败', msg: JSON.stringify(err)});
+        }
     });
 }
 
