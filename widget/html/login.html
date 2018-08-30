@@ -49,24 +49,25 @@
 <script language=javascript src='../script/common.js'></script>
 <script>
 apiready = function(){
-    $api.addEvt("#login",'click',function () {
-        var url = "/auth/login";
-        var data={
-            email:$api.val("#email"),
-            password:$api.val("#password")
-        };
-        api.alert({ title: '登录', msg: $api.val("#email")});
-        ajaxForm(url,"GET",data,function (ret,err) {
-            if(ret.Code == 200){
-                $api.setStorage('apiToken',ret.data.api_token);
-                $api.setStorage('user',ret.data.user);
-                fnOpenMain();
-            }else{
-                api.alert({ title: '登录', msg: '登录失败'});
-            }
-        });
-    })
+
 }
+$api.addEvt("#login",'click',function () {
+    var url = "/auth/login";
+    var data={
+        email:$api.val("#email"),
+        password:$api.val("#password")
+    };
+    api.alert({ title: '登录', msg: $api.val("#email")});
+    ajaxForm(url,"GET",data,function (ret,err) {
+        if(ret.Code == 200){
+            $api.setStorage('apiToken',ret.data.api_token);
+            $api.setStorage('user',ret.data.user);
+            fnOpenMain();
+        }else{
+            api.alert({ title: '登录', msg: '登录失败'});
+        }
+    });
+})
 function forget_password(){
   api.openWin({
       name: 'forget_password',
