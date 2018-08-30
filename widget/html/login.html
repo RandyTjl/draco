@@ -52,10 +52,9 @@ apiready = function(){
     $api.addEvt($api.byId('login'),'click',function () {
         var url = "/auth/login";
         var data={
-            email:$api.val("#email"),
-            password:$api.val("#password")
+            email:$api.val($api.byId('email')),
+            password:$api.val($api.byId('password'))
         };
-        api.alert({ title: '登录', msg: $api.val("#email")});
         ajaxForm(url,"GET",data,function (ret,err) {
             if(ret.Code == 200){
                 $api.setStorage('apiToken',ret.data.api_token);
