@@ -52,7 +52,7 @@ function fnCheckUpdate () {
 function ajaxForm(url,method,data,callback) {
 	url = config['url']+url;
 	headers = {
-        "apiToken":getApiToken()
+        "apiToken":$api.getStorage("apiToken")
     };
     api.ajax({
         url: url,
@@ -80,7 +80,7 @@ function ajaxJson(url,method,data,callback) {
     // 提交JSON数据
     url = config['url']+url;
     headers = {
-        "apiToken":getApiToken(),
+        "apiToken":$api.getStorage("apiToken"),
         'Content-Type': 'application/json;charset=utf-8'
     };
     api.ajax({
@@ -98,33 +98,20 @@ function ajaxJson(url,method,data,callback) {
 }
 
 /**
- * 获得apiToken
+ * 获得apiToken用于首页判断
  */
 function getApiToken() {
     apiToken = $api.getStorage("apiToken");
     if(apiToken == '' || apiToken == undefined){
-        $api.toast({
-            msg: 'token失效',
-            duration: 2000,
-            location: 'middle'
-        });
-        api.openWin({
-            name: 'login_header',
-            url: './html/login_header.html',
-            pageParam: {
-                name: 'login',
-                url: './login.html',
-                title: '登录'
-            }
-        })
+       return false;
     }
+    return apiToken;
 }
 
 /**
  * 打开首页
  */
 function fnOpenMain() {
-
     api.openWin({
         name: 'main',
         url: './html/main.html',
@@ -134,4 +121,19 @@ function fnOpenMain() {
         slidBackEnabled: false
     });
 };
+
+/**
+ * 打开登录页
+ */
+function fnOpenLogin() {
+    api.openWin({
+        name: 'login_header',
+        url: './html/login_header.html',
+        pageParam: {
+            name: 'login',
+            url: './login.html',
+            title: '登录'
+        }
+    })
+}
 

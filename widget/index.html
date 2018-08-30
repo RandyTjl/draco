@@ -21,28 +21,28 @@
 
         //登录状态判断
         function loginStatus() {
-          var apiToken = getApiToken();
-          var url = "/auth/verifyApiToken";
-          var method = "POST";
-          var data = {
-            "apiToken":apiToken,
-          };
-            ajaxJson(url,method,data,function (ret,err) {
-                if(ret.status){
-                    fnOpenMain();
-                }else{
-                    api.openWin({
-                        name: 'login_header',
-                        url: './html/login_header.html',
-                        pageParam: {
-                            name: 'login',
-                            url: './login.html',
-                            title: '登录'
-                        }
-                    })
-                }
-            })
-
+            var apiToken = getApiToken();
+            if(!apiToken){
+                api.toast({
+                    msg: 'token失效',
+                    duration: 3000,
+                    location: 'middle'
+                });
+                fnOpenLogin();
+            }else{
+                var url = "/auth/verifyApiToken";
+                var method = "POST";
+                var data = {
+                    "apiToken":apiToken,
+                };
+                ajaxJson(url,method,data,function (ret,err) {
+                    if(ret.status==200){
+                        fnOpenMain();
+                    }else{
+                        fnOpenLogin();
+                    }
+                })
+            }
         }
 
     </script>
