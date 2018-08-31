@@ -49,23 +49,23 @@
 <script language=javascript src='../script/common.js'></script>
 <script>
 apiready = function(){
-    $api.addEvt($api.byId('login'),'click',function () {
-        var url = "/auth/login";
-        api.alert({ title: '操作失败', msg:$api.val($api.byId('email'))});
-        var data={
-            email:$api.val($api.byId('email')),
-            password:$api.val($api.byId('password'))
-        };
 
-        ajaxForm(url,"GET",data,function (ret) {
-            if(ret.code == 200){
-                $api.setStorage('apiToken',ret.data.api_token);
-                $api.setStorage('user',ret.data.user);
-                fnOpenMain();
-            }
-        });
-    })
 }
+
+$api.addEvt($api.byId('login'),'click',function () {
+    var url = "/auth/login";
+    var data={
+        email:$api.val($api.byId('email')),
+        password:$api.val($api.byId('password'))
+    };
+    ajaxForm(url,"GET",data,function (ret) {
+        if(ret.code == 200){
+            $api.setStorage('apiToken',ret.data.api_token);
+            $api.setStorage('user',ret.data.user);
+            fnOpenMain();
+        }
+    });
+})
 function forget_password(){
   api.openWin({
       name: 'forget_password',
