@@ -50,6 +50,7 @@ function fnCheckUpdate () {
  * @param data
  */
 function ajaxForm(url,method,data,callback) {
+    api.alert({ title: '操作失败', msg:JSON.stringify(data)});
 	url = config['url']+url;
 	headers = {
         "apiToken":$api.getStorage("apiToken")

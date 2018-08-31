@@ -54,9 +54,13 @@ apiready = function(){
 
 $api.addEvt($api.byId('login'),'click',function () {
     var url = "/auth/login";
-    var data={
+    /*var data={
         email:$api.val($api.byId('email')),
         password:$api.val($api.byId('password'))
+    };*/
+    var data={
+        email:1,
+        password:2
     };
     ajaxForm(url,"get",data,function (ret) {
         if(ret.code == 200){
