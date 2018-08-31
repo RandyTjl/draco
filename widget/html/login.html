@@ -62,7 +62,7 @@ $api.addEvt($api.byId('login'),'click',function () {
         if(ret.code == 200){
             $api.setStorage('apiToken',ret.data.api_token);
             $api.setStorage('user',ret.data.user);
-            fnOpenMain();
+            fnOpenMain("./main.html");
         }
     });
 })

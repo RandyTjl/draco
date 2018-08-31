@@ -92,7 +92,7 @@ function ajaxJson(url,method,data,callback) {
             body:data
         },
     }, function(ret, err) {
-        if(ret.statusCode){
+        if(ret.status){
             callback(ret);
         }else{
             api.alert({ title: '操作失败', msg:ret.message});
