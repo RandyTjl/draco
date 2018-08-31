@@ -23,7 +23,6 @@
         //登录状态判断
         function loginStatus() {
             var apiToken = getApiToken();
-            api.alert({ title: '操作失败', msg:apiToken});
             if(!apiToken){
                 fnOpenLogin();
             }else{
