@@ -49,8 +49,7 @@ function fnCheckUpdate () {
  * @param method
  * @param data
  */
-function ajaxForm(url,method,data,callback) {
-    api.alert({ title: '操作失败', msg:JSON.stringify(data)});
+function ajaxForm(url,method,callback) {
 	url = config['url']+url;
 	headers = {
         "apiToken":$api.getStorage("apiToken")
@@ -58,10 +57,8 @@ function ajaxForm(url,method,data,callback) {
     api.ajax({
         url: url,
         method: method,
-        data: data,
         headers:headers,
     }, function(ret) {
-        api.alert({ title: '操作失败', msg:JSON.stringify(ret)});
         if(ret.status){
             callback(ret);
         }else{
@@ -112,10 +109,13 @@ function getApiToken() {
 /**
  * 打开首页
  */
-function fnOpenMain() {
+function fnOpenMain(url) {
+    if(url == ''){
+        url = './html/main.html';
+    }
     api.openWin({
         name: 'main',
-        url: './html/main.html',
+        url: url,
         bounces: false,
         vScrollBarEnabled: false,
         hScrollBarEnabled: false,
