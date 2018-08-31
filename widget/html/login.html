@@ -38,7 +38,7 @@
       </ul>
   </div>
   <div style="margin:0 1.5em">
-    <div class="aui-btn aui-btn-info aui-btn-block  " id="login">登陆</div>
+    <div class="aui-btn aui-btn-info aui-btn-block  " id="login">登录</div>
   </div>
   <div class="aui-col-xs-12" style="text-align:center;margin-top:1em">
     <a  href="#" style="font-size:1em">立即注册</a>
@@ -51,10 +51,12 @@
 apiready = function(){
     $api.addEvt($api.byId('login'),'click',function () {
         var url = "/auth/login";
+        api.alert({ title: '操作失败', msg:$api.val($api.byId('email'))});
         var data={
             email:$api.val($api.byId('email')),
             password:$api.val($api.byId('password'))
         };
+
         ajaxForm(url,"GET",data,function (ret) {
             if(ret.code == 200){
                 $api.setStorage('apiToken',ret.data.api_token);
