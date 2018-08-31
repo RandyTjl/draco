@@ -58,7 +58,7 @@ $api.addEvt($api.byId('login'),'click',function () {
         email:$api.val($api.byId('email')),
         password:$api.val($api.byId('password'))
     };
-    ajaxJson(url,"post",data,function (ret) {
+    ajaxForm(url,"post",data,function (ret) {
         if(ret.code == 200){
             $api.setStorage('apiToken',ret.data.api_token);
             $api.setStorage('user',ret.data.user);
