@@ -58,7 +58,9 @@ function ajaxForm(url,method,data,callback) {
         url: url,
         method: method,
         headers:headers,
-        data:data,
+        data:{
+            values:data
+        },
     }, function(ret) {
         api.alert({ title: '操作失败', msg:JSON.stringify(ret) });
         if(ret.status){
@@ -87,7 +89,9 @@ function ajaxJson(url,method,data,callback) {
         url: url,
         method: 'post',
         headers: headers,
-        data: data
+        data:{
+            body:data
+        },
     }, function(ret, err) {
         if(ret.statusCode){
             callback(ret);
