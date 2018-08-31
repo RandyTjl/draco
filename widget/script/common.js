@@ -88,9 +88,9 @@ function ajaxJson(url,method,data,callback) {
         data: data
     }, function(ret, err) {
         if(ret.statusCode){
-            callback(ret.body,err);
+            callback(ret);
         }else{
-            api.alert({ title: '操作失败', msg: JSON.stringify(err)});
+            api.alert({ title: '操作失败', msg:ret.message});
         }
     });
 }

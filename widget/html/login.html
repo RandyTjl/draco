@@ -54,13 +54,15 @@ apiready = function(){
 
 $api.addEvt($api.byId('login'),'click',function () {
     var url = "/auth/login";
-    var data= "email="+$api.val($api.byId('email'))+ "&password="+$api.val($api.byId('password'));
-    url = url+"?"+data;
-    ajaxForm(url,"get",function (ret) {
+    var data={
+        email:$api.val($api.byId('email')),
+        password:$api.val($api.byId('password'))
+    };
+    ajaxJson(url,"post",data,function (ret) {
         if(ret.code == 200){
             $api.setStorage('apiToken',ret.data.api_token);
             $api.setStorage('user',ret.data.user);
-            fnOpenMain('./main.html');
+            fnOpenMain();
         }
     });
 })
