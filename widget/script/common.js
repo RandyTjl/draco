@@ -62,7 +62,6 @@ function ajaxForm(url,method,data,callback) {
             values:data
         },
     }, function(ret) {
-        api.alert({ title: '操作測試', msg:JSON.stringify(ret)});
         if(ret.status){
             callback(ret);
         }else{
@@ -93,6 +92,7 @@ function ajaxJson(url,method,data,callback) {
             body:data
         },
     }, function(ret, err) {
+        api.alert({ title: '操作測試', msg:JSON.stringify(ret)});
         if(ret.status){
             callback(ret);
         }else{
