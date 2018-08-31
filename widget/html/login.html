@@ -61,6 +61,7 @@ $api.addEvt($api.byId('login'),'click',function () {
     ajaxForm(url,"post",data,function (ret) {
         if(ret.code == 200){
             $api.setStorage('apiToken',ret.data.api_token);
+            api.alert({ title: '操作成功', msg:JSON.stringify(ret.data)});
             $api.setStorage('user',ret.data.user);
             fnOpenMain("./main.html");
         }
