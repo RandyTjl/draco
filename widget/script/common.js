@@ -92,7 +92,6 @@ function ajaxJson(url,method,data,callback) {
             body:data
         },
     }, function(ret, err) {
-        api.alert({ title: '操作測試', msg:JSON.stringify(ret)});
         if(ret.status){
             callback(ret);
         }else{
