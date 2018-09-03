@@ -29,7 +29,7 @@ function getPylon() {
             /*var da = eval('(' + ret.data + ')');*/
             var da = ret.data.data;
             var html = '';
-            for(var i in da.length){
+            for(var i=0;i<da.length;i++){
                 html += '<div class="aui-card-list">\n' +
                     '          <div class="aui-card-list-header">\n' +da[i].name + '</div>\n' +
                     '          <div class="aui-card-list-content">\n' +
