@@ -8,100 +8,14 @@
 </head>
 <link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
 <body>
-<section class="aui-content">
-      <div class="aui-card-list">
-          <div class="aui-card-list-header">
-              卡片布局头部区域
-          </div>
-          <div class="aui-card-list-content">
-              <img src="../../image/l2.png" />
-          </div>
-          <div class="aui-card-list-footer">
-              2016年7月12日
-          </div>
-      </div>
-      <div class="aui-card-list">
-          <div class="aui-card-list-header">
-              卡片布局头部区域
-          </div>
-          <div class="aui-card-list-content">
-              <img src="../../image/l2.png" />
-          </div>
-          <div class="aui-card-list-footer">
-              2016年7月12日
-          </div>
-      </div>
-      <div class="aui-card-list">
-          <div class="aui-card-list-header">
-              卡片布局头部区域
-          </div>
-          <div class="aui-card-list-content">
-              <img src="../../image/l2.png" />
-          </div>
-          <div class="aui-card-list-footer">
-              2016年7月12日
-          </div>
-      </div>
-      <div class="aui-card-list">
-          <div class="aui-card-list-header">
-              卡片布局头部区域
-          </div>
-          <div class="aui-card-list-content">
-              <img src="../../image/l2.png" />
-          </div>
-          <div class="aui-card-list-footer">
-              2016年7月12日
-          </div>
-      </div>
-      <div class="aui-card-list">
-          <div class="aui-card-list-header">
-              卡片布局头部区域
-          </div>
-          <div class="aui-card-list-content">
-              <img src="../../image/l2.png" />
-          </div>
-          <div class="aui-card-list-footer">
-              2016年7月12日
-          </div>
-      </div>
-      <div class="aui-card-list">
-          <div class="aui-card-list-header">
-              卡片布局头部区域
-          </div>
-          <div class="aui-card-list-content">
-              <img src="../../image/l2.png" />
-          </div>
-          <div class="aui-card-list-footer">
-              2016年7月12日
-          </div>
-      </div>
-      <div class="aui-card-list">
-          <div class="aui-card-list-header">
-              卡片布局头部区域
-          </div>
-          <div class="aui-card-list-content">
-              <img src="../../image/l2.png" />
-          </div>
-          <div class="aui-card-list-footer">
-              2016年7月12日
-          </div>
-      </div>
-      <div class="aui-card-list">
-          <div class="aui-card-list-header">
-              卡片布局头部区域
-          </div>
-          <div class="aui-card-list-content">
-              <img src="../../image/l2.png" />
-          </div>
-          <div class="aui-card-list-footer">
-              2016年7月12日
-          </div>
-      </div>
+<section class="aui-content" id="coll_list">
+
 </section>
 
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/vue/vue.js"></script>
+<script language=javascript src='../script/common.js'></script>
 <script>
 apiready = function(){
     getPylon();
@@ -123,7 +37,7 @@ function getPylon() {
                     '          </div>\n' +
                     '      </div>';
             }
-            $api.append();
+            $api.append($api.byId("coll_list"),html);
         }else{
             api.alert({ title: '错误', msg:ret.data.message});
         }
