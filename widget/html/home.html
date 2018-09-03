@@ -76,7 +76,7 @@
     function getPylon() {
         var url = "/pylons";
         var method = "GET";
-        ajaxJson(url,method,data,function (ret) {
+        ajaxJson(url,method,'',function (ret) {
             if(ret.code == 200){
                 var da = eval('(' + ret.data + ')');
                 var html = '';

@@ -23,7 +23,7 @@ apiready = function(){
 function getPylon() {
     var url = "/pylons";
     var method = "GET";
-    ajaxJson(url,method,data,function (ret) {
+    ajaxJson(url,method,'',function (ret) {
         if(ret.code == 200){
             var da = eval('(' + ret.data + ')');
             var html = '';
@@ -33,7 +33,7 @@ function getPylon() {
                     '          <div class="aui-card-list-content">\n' +
                     '              <img src="../../image/l2.png" />\n' +
                     '          </div>\n' +
-                    '          <div class="aui-card-list-footer">\n' + da[i].created_at+'
+                    '          <div class="aui-card-list-footer">\n' + da[i].created_at+
                     '          </div>\n' +
                     '      </div>';
             }
