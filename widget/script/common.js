@@ -86,12 +86,13 @@ function ajaxJson(url,method,data,callback) {
     };
     api.ajax({
         url: url,
-        method: 'post',
+        method: method,
         headers: headers,
         data:{
             body:data
         },
     }, function(ret, err) {
+        api.alert({ title: '操作測試', msg:JSON.stringify(ret)});
         if(ret.status){
             callback(ret);
         }else{
