@@ -79,7 +79,8 @@
         var method = "GET";
         ajaxJson(url,method,'',function (ret) {
             if(ret.code == 200){
-                var da = eval('(' + ret.data + ')');
+                /*var da = eval('(' + ret.data + ')');*/
+                var da = re.data.data;
                 var html = '';
                 for(var i in da.length){
                     html += '<div class="aui-card-list">\n' +
