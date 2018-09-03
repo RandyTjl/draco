@@ -8,7 +8,7 @@
 </head>
 <link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
 <body>
-<section class="aui-content-padded">
+<section class="aui-content-padded" id="home_list">
 	<div class="aui-card-list">
 		<div class="aui-card-list-header">
 			卡片布局头部区域
@@ -68,5 +68,32 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/vue/vue.js"></script>
-
+<script>
+    apiready = function(){
+        getPylon();
+    }
+    function getPylon() {
+        var url = "/pylons";
+        var method = "GET";
+        ajaxJson(url,method,data,function (ret) {
+            if(ret.code == 200){
+                var da = eval('(' + ret.data + ')');
+                var html = '';
+                for(var i in da.length){
+                    html += '<div class="aui-card-list">\n' +
+                        '          <div class="aui-card-list-header">\n' +da[i].name + '</div>\n' +
+                        '          <div class="aui-card-list-content">\n' +
+                        '              <img src="../../image/l2.png" />\n' +
+                        '          </div>\n' +
+                        '          <div class="aui-card-list-footer">\n' + da[i].created_at+'
+                    '          </div>\n' +
+                    '      </div>';
+                }
+                $api.append($api.byId("home_list"),html);
+            }else{
+                api.alert({ title: '错误', msg:ret.data.message});
+            }
+        })
+    }
+</script>
 </html>

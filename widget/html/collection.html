@@ -107,7 +107,6 @@ apiready = function(){
     getPylon();
 }
 function getPylon() {
-    var apiToken = getApiToken();
     var url = "/pylons";
     var method = "GET";
     ajaxJson(url,method,data,function (ret) {
@@ -124,6 +123,7 @@ function getPylon() {
                     '          </div>\n' +
                     '      </div>';
             }
+            $api.append();
         }else{
             api.alert({ title: '错误', msg:ret.data.message});
         }
