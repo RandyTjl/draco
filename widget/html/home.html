@@ -84,13 +84,25 @@
                 var html = '';
                 for(var i=0;i<da.length;i++){
                     html += '<div class="aui-card-list">\n' +
-                        '          <div class="aui-card-list-header">\n' +da[i].name + '</div>\n' +
-                        '          <div class="aui-card-list-content">\n' +
-                        '              <img src="../../image/l2.png" />\n' +
-                        '          </div>\n' +
-                        '          <div class="aui-card-list-footer">\n' + da[i].created_at+
-                    '          </div>\n' +
-                    '      </div>';
+                        '\t\t<div class="aui-card-list-header aui-card-list-user aui-border-b">\n' +
+                        '\t\t\t<div class="aui-card-list-user-avatar">\n' +
+                        '\t\t\t\t<img src="../../image/demo4.png" class="aui-img-round" />\n' +
+                        '\t\t\t</div>\n' +
+                        '\t\t\t<div class="aui-card-list-user-name">\n' +
+                        '\t\t\t\t<div>' +da[i].name + '</div>\n' +
+                        '\t\t\t\t<small>' +da[i].created_at + '</small>\n' +
+                        '\t\t\t</div>\n' +
+                        '\t\t\t<div class="aui-card-list-user-info">' +da[i].site + '</div>\n' +
+                        '\t\t</div>\n' +
+                        '\t\t<div class="aui-card-list-content-padded">\n' +
+                        '\t\t\t<img src="../../image/l2.png" />\n' +
+                        '\t\t</div>\n' +
+                        '\t\t<div class="aui-card-list-footer aui-border-t">\n' +
+                        '\t\t\t<div><i class="aui-iconfont aui-icon-calendar">日志</i> 666</div>\n' +
+                        '\t\t\t<div><i class="aui-iconfont aui-icon-star"></i> 888</div>\n' +
+                        '\t\t</div>\n' +
+                        '\t</div>';
+
                 }
                 $api.append($api.byId("home_list"),html);
             }else{
