@@ -62,7 +62,6 @@ function initObject(data) {
         alert(p);
        switch (p){
            case 'tabula':
-               alert(data[p]);
                for(var i in data[p]){
                    //横隔
                    cubeGeometry = new THREE.PlaneGeometry();
