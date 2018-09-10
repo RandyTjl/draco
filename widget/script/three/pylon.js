@@ -63,7 +63,7 @@ function initObject(data) {
        switch (p){
            case 'tabula':
                alert(data[p]);
-               for(var i=0;i<data[p].length();i++){
+               for(var i in data[p]){
                    //横隔
                    cubeGeometry = new THREE.PlaneGeometry();
                    alert(data.tabula[i]['vertices'].replace(/^\"|\"$/g,''));
@@ -74,7 +74,7 @@ function initObject(data) {
                
                break;
            case 'bottom':
-               for(var i=0;i<data.bottom.length;i++){
+               for(var i in data[p]){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
                    cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));
@@ -84,7 +84,7 @@ function initObject(data) {
                
                break;
            case 'body':
-               for(var i=0;i<data.body.length;i++){
+               for(var i in data[p]){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
                    cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));
@@ -93,7 +93,7 @@ function initObject(data) {
                }
                break;
            case 'header':
-               for(var i=0;i<data.header.length;i++){
+               for(var i in data[p]){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
                    cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));
@@ -102,7 +102,7 @@ function initObject(data) {
                }
                break;
            case 'header_other':
-               for(var i=0;i<data.header_other.length;i++){
+               for(var i in data[p]){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
                    cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));

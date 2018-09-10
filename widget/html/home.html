@@ -61,15 +61,15 @@
     function pylonShow(pylon_id) {
         var name = "pylon";
         var url = "./pylon.html";
-        api.openFrame({
-            name:name,
-            url:url,
-            reload:true,
-            pageParam: {
-                pylon_id: pylon_id
-            },
-            overScrollMode:"scrolls",
+        api.openWin({
+            name: name,
+            url: url,
+            bounces: false,
+            vScrollBarEnabled: false,
+            hScrollBarEnabled: false,
+            slidBackEnabled: false
         });
+
     }
 </script>
 </html>

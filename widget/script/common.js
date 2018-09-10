@@ -14,7 +14,6 @@ function returnWin(win_name){
 				name: win_name
 		});
 	}else{
-	    alert('test')
 		api.closeWin();
 	}
 }
