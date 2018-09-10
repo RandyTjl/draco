@@ -89,7 +89,6 @@ function getPylon() {
                     '\t\t</div>\n' +
                     '\t</div>';
             }
-            api.alert({ title: '操作測試', msg:JSON.stringify(html)});
             $api.append($api.byId("coll_list"),html);
         }else{
             api.alert({ title: '错误', msg:ret.data.message});
