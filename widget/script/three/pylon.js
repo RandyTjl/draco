@@ -3,6 +3,7 @@ var mesh;
 var camera;
 var scene;
 var light;
+var t = 0;
 
 //初始化画布
 function initThree(id) {
