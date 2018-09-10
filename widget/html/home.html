@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
 <body>
 <section class="aui-content-padded" id="home_list">
-	
+
 </section>	
 
 </body>
@@ -41,7 +41,7 @@
                         '\t\t\t</div>\n' +
                         '\t\t\t<div class="aui-card-list-user-info">' +da[i].site + '</div>\n' +
                         '\t\t</div>\n' +
-                        '\t\t<div class="aui-card-list-content-padded">\n' +
+                        '\t\t<div class="aui-card-list-content-padded" onclick="pylonShow('+da[i]['id']+')" >\n' +
                         '\t\t\t<img src="http://www.auicss.com/aui2.0/image/l2.png" />\n' +
                         '\t\t</div>\n' +
                         '\t\t<div class="aui-card-list-footer aui-border-t">\n' +
@@ -56,6 +56,20 @@
                 api.alert({ title: '错误', msg:ret.data.message});
             }
         })
+    }
+
+    function pylonShow(pylon_id) {
+        var name = "pylon";
+        var url = "./pylon.html";
+        api.openFrame({
+            name:name,
+            url:url,
+            reload:true,
+            pageParam: {
+                pylon_id: pylon_id
+            },
+            overScrollMode:"scrolls",
+        });
     }
 </script>
 </html>
