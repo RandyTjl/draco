@@ -53,13 +53,13 @@ function initLight() {
 
 //初始化对象
 function initObject(data) {
-    alert(1);
     //立方体
     var cubeGeometry;
     //材质
     var material = new THREE.MeshBasicMaterial({color:0x919191,wireframe : true,skinning:true});
     
     for(var p in data){//遍历json对象的每个key/value对,p为key
+        alert(p);
        switch (p){
            case 'tabula':
                for(var i=0;i<data.tabula.length;i++){
