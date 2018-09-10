@@ -64,6 +64,7 @@ function initObject(data) {
                for(var i=0;i<data.tabula.length;i++){
                    //横隔
                    cubeGeometry = new THREE.PlaneGeometry();
+                   alert(data.tabula[i]['vertices'].replace(/^\"|\"$/g,''));
                    cubeGeometry.vertices = JSON.parse(data.tabula[i]['vertices'].replace(/^\"|\"$/g,''));
                    cubeGeometry.faces = JSON.parse(data.tabula[i]['faces'].replace(/^\"|\"$/g,''));
                    mesh = new THREE.Mesh( cubeGeometry,material );
