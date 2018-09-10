@@ -64,10 +64,9 @@
         api.openWin({
             name: name,
             url: url,
-            bounces: false,
-            vScrollBarEnabled: false,
-            hScrollBarEnabled: false,
-            slidBackEnabled: false
+            pageParam: {
+                pylon_id: pylon_id
+            }
         });
 
     }
