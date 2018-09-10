@@ -53,6 +53,7 @@ function initLight() {
 
 //初始化对象
 function initObject(data) {
+    alert(1);
     //立方体
     var cubeGeometry;
     //材质
