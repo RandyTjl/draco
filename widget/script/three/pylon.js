@@ -62,13 +62,13 @@ function initObject(data) {
         alert(p);
        switch (p){
            case 'tabula':
-               alert(data.tabula.length);
-               for(var i=0;i<data.tabula.length;i++){
+               alert(data[p].length);
+               for(var i=0;i<data[p].length;i++){
                    //横隔
                    cubeGeometry = new THREE.PlaneGeometry();
                    alert(data.tabula[i]['vertices'].replace(/^\"|\"$/g,''));
-                   cubeGeometry.vertices = JSON.parse(data.tabula[i]['vertices'].replace(/^\"|\"$/g,''));
-                   cubeGeometry.faces = JSON.parse(data.tabula[i]['faces'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.faces = JSON.parse(data[p][i]['faces'].replace(/^\"|\"$/g,''));
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                
@@ -78,8 +78,8 @@ function initObject(data) {
                for(var i=0;i<data.bottom.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
-                   cubeGeometry.vertices = JSON.parse(data.bottom[i]['vertices'].replace(/^\"|\"$/g,''));
-                   cubeGeometry.faces = JSON.parse(data.bottom[i]['faces'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.faces = JSON.parse(data[p][i]['faces'].replace(/^\"|\"$/g,''));
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                
@@ -88,8 +88,8 @@ function initObject(data) {
                for(var i=0;i<data.body.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
-                   cubeGeometry.vertices = JSON.parse(data.body[i]['vertices'].replace(/^\"|\"$/g,''));
-                   cubeGeometry.faces = JSON.parse(data.body[i]['faces'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.faces = JSON.parse(data[p][i]['faces'].replace(/^\"|\"$/g,''));
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                break;
@@ -97,8 +97,8 @@ function initObject(data) {
                for(var i=0;i<data.header.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
-                   cubeGeometry.vertices = JSON.parse(data.header[i]['vertices'].replace(/^\"|\"$/g,''));
-                   cubeGeometry.faces = JSON.parse(data.header[i]['faces'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.faces = JSON.parse(data[p][i]['faces'].replace(/^\"|\"$/g,''));
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                break;
@@ -106,8 +106,8 @@ function initObject(data) {
                for(var i=0;i<data.header_other.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
-                   cubeGeometry.vertices = JSON.parse(data.header_other[i]['vertices'].replace(/^\"|\"$/g,''));
-                   cubeGeometry.faces = JSON.parse(data.header_other[i]['faces'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.vertices = JSON.parse(data[p][i]['vertices'].replace(/^\"|\"$/g,''));
+                   cubeGeometry.faces = JSON.parse(data[p][i]['faces'].replace(/^\"|\"$/g,''));
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                break;
