@@ -62,8 +62,8 @@ function initObject(data) {
         alert(p);
        switch (p){
            case 'tabula':
-               alert(data[p].length);
-               for(var i=0;i<data[p].length;i++){
+               alert(data[p]);
+               for(var i=0;i<data[p].length();i++){
                    //横隔
                    cubeGeometry = new THREE.PlaneGeometry();
                    alert(data.tabula[i]['vertices'].replace(/^\"|\"$/g,''));
@@ -74,7 +74,6 @@ function initObject(data) {
                
                break;
            case 'bottom':
-               alert(2);
                for(var i=0;i<data.bottom.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
