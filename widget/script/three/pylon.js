@@ -62,6 +62,7 @@ function initObject(data) {
         alert(p);
        switch (p){
            case 'tabula':
+               alert(1);
                for(var i=0;i<data.tabula.length;i++){
                    //横隔
                    cubeGeometry = new THREE.PlaneGeometry();
@@ -73,6 +74,7 @@ function initObject(data) {
                
                break;
            case 'bottom':
+               alert(2);
                for(var i=0;i<data.bottom.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
