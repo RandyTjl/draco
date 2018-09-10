@@ -14,6 +14,7 @@ function returnWin(win_name){
 				name: win_name
 		});
 	}else{
+	    alert('test')
 		api.closeWin();
 	}
 }
@@ -24,10 +25,10 @@ function fnCheckUpdate () {
     mam.checkUpdate(function(ret, err){
         if (ret && ret.status) {
             if(!ret.result.update){
-                api.alert({
+                /*api.alert({
                     title: '版本更新',
                     msg: '当前已是最新版本，版本号：' + api.appVersion
-                });
+                });*/
             } else {
                 api.confirm({
                     title: '有新版本',
