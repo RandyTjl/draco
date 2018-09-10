@@ -61,49 +61,49 @@ function initObject(data) {
     for(var p in data){//遍历json对象的每个key/value对,p为key
        switch (p){
            case 'tabula':
-               for(var i=0;i<data.tabula;i++){
+               for(var i=0;i<data.tabula.length;i++){
                    //横隔
                    cubeGeometry = new THREE.PlaneGeometry();
-                   cubeGeometry.vertices = JSON.parse(data[i]['vertices']);
-                   cubeGeometry.faces = JSON.parse(data[i]['faces']);
+                   cubeGeometry.vertices = JSON.parse(data.tabula[i]['vertices']);
+                   cubeGeometry.faces = JSON.parse(data.tabula[i]['faces']);
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                
                break;
            case 'bottom':
-               for(var i=0;i<data.bottom;i++){
+               for(var i=0;i<data.bottom.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
-                   cubeGeometry.vertices = JSON.parse(data[i]['vertices']);
-                   cubeGeometry.faces = JSON.parse(data[i]['faces']);
+                   cubeGeometry.vertices = JSON.parse(data.bottom[i]['vertices']);
+                   cubeGeometry.faces = JSON.parse(data.bottom[i]['faces']);
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                
                break;
            case 'body':
-               for(var i=0;i<data.body;i++){
+               for(var i=0;i<data.body.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
-                   cubeGeometry.vertices = JSON.parse(data[i]['vertices']);
-                   cubeGeometry.faces = JSON.parse(data[i]['faces']);
+                   cubeGeometry.vertices = JSON.parse(data.body[i]['vertices']);
+                   cubeGeometry.faces = JSON.parse(data.body[i]['faces']);
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                break;
            case 'header':
-               for(var i=0;i<data.header;i++){
+               for(var i=0;i<data.header.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
-                   cubeGeometry.vertices = JSON.parse(data[i]['vertices']);
-                   cubeGeometry.faces = JSON.parse(data[i]['faces']);
+                   cubeGeometry.vertices = JSON.parse(data.header[i]['vertices']);
+                   cubeGeometry.faces = JSON.parse(data.header[i]['faces']);
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                break;
            case 'header_other':
-               for(var i=0;i<data.header_other;i++){
+               for(var i=0;i<data.header_other.length;i++){
                    //立方体
                    cubeGeometry = new THREE.Geometry();
-                   cubeGeometry.vertices = JSON.parse(data[i]['vertices']);
-                   cubeGeometry.faces = JSON.parse(data[i]['faces']);
+                   cubeGeometry.vertices = JSON.parse(data.header_other[i]['vertices']);
+                   cubeGeometry.faces = JSON.parse(data.header_other[i]['faces']);
                    mesh = new THREE.Mesh( cubeGeometry,material );
                }
                break;

@@ -8,6 +8,7 @@ function getRandnum(n,m){
 }
 //返回到指定页面
 function returnWin(win_name){
+    alert(win_name);
 	//如果存在返回页面则返回到指定页面，否则返回到上一页
 	if(win_name){
 		api.closeToWin({
