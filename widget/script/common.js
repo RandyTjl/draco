@@ -1,3 +1,5 @@
+document.write("<script language=javascript src='./script/config.js'></script>");
+document.write("<script language=javascript src='./script/api.js'></script>");
 
 //获得随机整数
 function getRandnum(n,m){
