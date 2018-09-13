@@ -18,7 +18,7 @@ function initThree(id) {
 }
 
 //初始化相机
-function initCamera(camera_position) {
+function initCamera() {
     camera = new THREE.PerspectiveCamera(70, width / height, 1, 10000);
     
     camera.position.x = 200;
@@ -118,7 +118,7 @@ function initObject(data) {
 
 function threeStart(id,data) {
     initThree(id);
-    initCamera(camera_position);
+    initCamera();
     initScene();
     initLight();
     initObject(data);
