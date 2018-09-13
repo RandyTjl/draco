@@ -128,12 +128,7 @@ function threeStart(id,data) {
 //动漫特殊效果
 function animation(camera_position){
     //renderer.clear();
-    if(camera_position != '' && camera_position != undefined){
-        cameraPosition(camera_position)
-    }else{
-        cameraRotate();
-    }
-    
+    cameraRotate();
     renderer.render(scene, camera);
 
     loopAnimal =  requestAnimationFrame(animation);
@@ -155,6 +150,9 @@ function cameraPosition(camera_position){
     camera.position.y = (300-camera_position).y;
     camera.lookAt(0,0,0);
     t = t+0.01;
+    renderer.render(scene, camera);
+    
+    loopAnimal =  requestAnimationFrame(animation);
 }
 
 
