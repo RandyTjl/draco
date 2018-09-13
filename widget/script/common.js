@@ -148,7 +148,7 @@ function fnOpenLogin() {
  * @param pylon_id
  */
 function pylonShow(pylon) {
-    pylon = $api.strToJson(pylon);
+    pylon = $api.strToJson(decodeURI(pylon));
     var name = "pylon";
     var url = "./pylon.html";
     api.openWin({
