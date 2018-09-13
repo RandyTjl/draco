@@ -30,8 +30,12 @@
     <permission name="bootCompleted" />
     <permission name="hardware" />
     <preference name="softInputMode" value="resize"/>
-    <feature name="qq">
+    <!--<feature name="qq">
         <param name="urlScheme" value="tencent101064640" />
         <param name="apiKey" value="101064640" />
+    </feature>-->
+    <feature name="bMap">
+        <param name="android_api_key" value="Bdp7MN2ZLxBAuTjgbAdGSHv6LWtnQkOQ" />
+        <param name="ios_api_key" value="9QM11N3icO9hOn44ck5y7DS0uGTi9YKe" />
     </feature>
 </widget>

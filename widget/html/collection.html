@@ -28,35 +28,43 @@ var pullRefresh = new auiPullToRefresh({
     triggerDistance: 100  //下拉高度
 },function(ret){
     if(ret.status=="success"){
-        setTimeout(function(){
-            var wrap = document.getElementById("coll_list")
-            var lis = wrap.querySelectorAll('.aui-card-list');
-            var html ='';
-            for (var i = lis.length, length = i + 10; i < length; i++) {
-                html +=  html += '<div class="aui-card-list">\n' +
-                    '\t\t<div class="aui-card-list-header aui-card-list-user aui-border-b">\n' +
-                    '\t\t\t<div class="aui-card-list-user-avatar">\n' +
-                    '\t\t\t\t<img src="http://www.auicss.com/aui2.0/image/demo4.png" class="aui-img-round" />\n' +
-                    '\t\t\t</div>\n' +
-                    '\t\t\t<div class="aui-card-list-user-name">\n' +
-                    '\t\t\t\t<div>' +i + '</div>\n' +
-                    '\t\t\t\t<small>' +i+ '</small>\n' +
-                    '\t\t\t</div>\n' +
-                    '\t\t\t<div class="aui-card-list-user-info">' +i + '</div>\n' +
-                    '\t\t</div>\n' +
-                    '\t\t<div class="aui-card-list-content-padded">\n' +
-                    '\t\t\t<img src="http://www.auicss.com/aui2.0/image/l2.png" />\n' +
-                    '\t\t</div>\n' +
-                    '\t\t<div class="aui-card-list-footer aui-border-t">\n' +
-                    '\t\t\t<div><i class="aui-iconfont aui-icon-calendar">日志</i>6</div>\n' +
-                    '\t\t\t<div><i class="aui-iconfont aui-icon-star"></i> 888</div>\n' +
-                    '\t\t</div>\n' +
-                    '\t</div>';
-
+        var wrap = document.getElementById("coll_list")
+        var lis = wrap.querySelectorAll('.aui-card-list');
+        var page = Math.ceil(lis.length/10);
+        var html ='';
+        var url = "/pylons?page="+page;
+        var method = "GET";
+        ajaxJson(url,method,'',function (ret) {
+            if(ret.code == 200){
+                var da = ret.data.data;
+                for(var i=0;i<da.length;i++){
+                    html +=  html += '<div class="aui-card-list">\n' +
+                        '\t\t<div class="aui-card-list-header aui-card-list-user aui-border-b">\n' +
+                        '\t\t\t<div class="aui-card-list-user-avatar">\n' +
+                        '\t\t\t\t<img src="http://www.auicss.com/aui2.0/image/demo4.png" class="aui-img-round" />\n' +
+                        '\t\t\t</div>\n' +
+                        '\t\t\t<div class="aui-card-list-user-name">\n' +
+                        '\t\t\t\t<div>' +da[i].name + '</div>\n' +
+                        '\t\t\t\t<small>' +da[i].created_at + '</small>\n' +
+                        '\t\t\t</div>\n' +
+                        '\t\t\t<div class="aui-card-list-user-info">' +da[i].site + '</div>\n' +
+                        '\t\t</div>\n' +
+                        '\t\t<div class="aui-card-list-content-padded" onclick="pylonShow('+da[i]+')" >\n' +
+                        '\t\t\t<img src="http://www.auicss.com/aui2.0/image/l2.png" />\n' +
+                        '\t\t</div>\n' +
+                        '\t\t<div class="aui-card-list-footer aui-border-t">\n' +
+                        '\t\t\t<div><i class="aui-iconfont aui-icon-calendar">日志</i>6</div>\n' +
+                        '\t\t\t<div><i class="aui-iconfont aui-icon-star"></i> 888</div>\n' +
+                        '\t\t</div>\n' +
+                        '\t</div>';
+                }
+                wrap.insertAdjacentHTML('afterbegin', html);
+                pullRefresh.cancelLoading(); //刷新成功后调用此方法隐藏
+            }else{
+                pullRefresh.cancelLoading(); //刷新成功后调用此方法隐藏
+                api.alert({ title: '错误', msg:ret.data.message});
             }
-            wrap.insertAdjacentHTML('afterbegin', html);
-            pullRefresh.cancelLoading(); //刷新成功后调用此方法隐藏
-        },1500)
+        })
     }
 })
 
@@ -80,7 +88,7 @@ function getPylon() {
                     '\t\t\t</div>\n' +
                     '\t\t\t<div class="aui-card-list-user-info">' +da[i].site + '</div>\n' +
                     '\t\t</div>\n' +
-                    '\t\t<div class="aui-card-list-content-padded">\n' +
+                    '\t\t<div class="aui-card-list-content-padded" onclick="pylonShow('+da[i]+')" >\n' +
                     '\t\t\t<img src="http://www.auicss.com/aui2.0/image/l2.png" />\n' +
                     '\t\t</div>\n' +
                     '\t\t<div class="aui-card-list-footer aui-border-t">\n' +

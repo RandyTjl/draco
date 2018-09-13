@@ -11,7 +11,11 @@
     <script type="text/javascript" src="../script/common.js"></script>
     <script type="text/javascript" src="../script/three/three.min.js"></script>
     <script type="text/javascript" src="../script/three/pylon.js"></script>
-
+    <style>
+        .list_border{
+            border-bottom: 1px solid #dddddd;
+        }
+    </style>
 
 </head>
 <body>
@@ -26,16 +30,68 @@
 			<div id="canvas-frame" style="width: 100%;height: 500px">
 			</div>
 		</div>
-    </div>  
+    </div>
+    <div class="aui-content aui-margin-b-15">
+        <ul class="aui-list aui-list-in">
+            <li class="aui-list-header">详细信息</li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    电塔名称
+                </div>
+                <div class="aui-list-item-inner list_border" id="pylon_name">
+
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    电塔地址
+                </div>
+                <div class="aui-list-item-inner " id="pylon_site">
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="aui-content aui-margin-b-15">
+        <ul class="aui-list aui-list-in">
+            <li class="aui-list-header">
+                地址信息
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner aui-list-item-arrow" onclick="pylonMap()">
+                    <div class="aui-list-item-title">地图</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
 
 </body>
 <script type="text/javascript">
     apiready = function(){
         pylon_show();
     };
+    //双击点击图像增大
+    var dbl = 0;
+    var camera_position = 0;
+    $api.addEvt($api.byId('canvas-frame'), 'dblclick', function(){
+        if(dbl == 0){
+            camera_position = 30;
+            cameraPosition(camera_position);
+            dbl = 1;
+        }else{
+            dbl = 0;
+            cameraPosition();
+        }
+    });
 
+    //获取单个显示
     function pylon_show() {
         var pylon_id = api.pageParam.pylon_id;
+        var pylon_name = api.pageParam.pylon_name;
+        var pylon_site = api.pageParam.pylon_site;
+        $api.text($api.byId('pylon_name'),pylon_name);
+        $api.text($api.byId('pylon_site'),pylon_site);
         var url = "/pylons/"+pylon_id;
         var method = "GET";
         ajaxForm(url,method,'',function (ret) {
@@ -43,6 +99,24 @@
                 threeStart("canvas-frame",ret.data);
             }else{
                 api.alert({ title: '错误', msg:ret.message});
+            }
+        });
+    }
+
+    /**
+     * 地图展示
+     */
+    function pylonMap() {
+        var longitude = api.pageParam.longitude;
+        var latitude = api.pageParam.latitude;
+        var name = "pylonMap";
+        var url = "./pylonMap.html";
+        api.openWin({
+            name: name,
+            url: url,
+            pageParam: {
+                longitude:longitude,
+                latitude:latitude,
             }
         });
     }

@@ -143,3 +143,25 @@ function fnOpenLogin() {
     })
 }
 
+/**
+ * 单个电塔展示
+ * @param pylon_id
+ */
+function pylonShow(pylon) {
+    
+    var name = "pylon";
+    var url = "./pylon.html";
+    api.openWin({
+        name: name,
+        url: url,
+        pageParam: {
+            pylon_id: pylon['id'],
+            pylon_name:pylon['name'],
+            pylon_site:pylon['site'],
+            longitude:pylon['longitude'],
+            latitude:pylon['latitude'],
+        }
+    });
+    
+}
+

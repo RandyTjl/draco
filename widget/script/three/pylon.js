@@ -18,9 +18,9 @@ function initThree(id) {
 }
 
 //初始化相机
-function initCamera() {
+function initCamera(camera_position) {
     camera = new THREE.PerspectiveCamera(70, width / height, 1, 10000);
-    //camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 10, 1000  )
+    
     camera.position.x = 200;
     camera.position.y = 200;
     camera.position.z = 200;
@@ -118,17 +118,22 @@ function initObject(data) {
 
 function threeStart(id,data) {
     initThree(id);
-    initCamera();
+    initCamera(camera_position);
     initScene();
     initLight();
     initObject(data);
     animation();
 }
 
-//动漫效果
-function animation(){
+//动漫特殊效果
+function animation(camera_position){
     //renderer.clear();
-    cameraRotate();
+    if(camera_position != '' && camera_position != undefined){
+        cameraPosition(camera_position)
+    }else{
+        cameraRotate();
+    }
+    
     renderer.render(scene, camera);
 
     loopAnimal =  requestAnimationFrame(animation);
@@ -142,6 +147,16 @@ function cameraRotate(){
     camera.lookAt(0,0,0);
     t = t+0.01;
 }
+
+//摄像头远近
+function cameraPosition(camera_position){
+    camera.position.z = (300-camera_position).z*Math.sin(t);
+    camera.position.x = (300-camera_position).x*Math.cos(t);
+    camera.position.y = (300-camera_position).y;
+    camera.lookAt(0,0,0);
+    t = t+0.01;
+}
+
 
 
 
