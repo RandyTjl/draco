@@ -148,7 +148,6 @@ function fnOpenLogin() {
  * @param pylon_id
  */
 function pylonShow(pylon) {
-    api.alert({ title: '測試', msg:JSON.stringify(pylon)});
     var name = "pylon";
     var url = "./pylon.html";
     api.openWin({
