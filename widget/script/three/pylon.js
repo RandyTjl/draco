@@ -5,6 +5,7 @@ var scene;
 var light;
 var t = 0;
 var loopAnimal = ''; //循环动画
+var fov = 70; //摄像机远近
 
 //初始化画布
 function initThree(id) {
@@ -20,7 +21,7 @@ function initThree(id) {
 
 //初始化相机
 function initCamera() {
-    camera = new THREE.PerspectiveCamera(70, width / height, 1, 10000);
+    camera = new THREE.PerspectiveCamera(fov, width / height, 1, 10000);
     
     camera.position.x = 200;
     camera.position.y = 200;
@@ -146,14 +147,10 @@ function cameraRotate(){
 
 //摄像头远近
 function cameraPosition(camera_position){
-    camera.position.z = (300-camera_position).z*Math.sin(t);
-    camera.position.x = (300-camera_position).x*Math.cos(t);
-    camera.position.y = (300-camera_position).y;
-    camera.lookAt(0,0,0);
-    t = t+0.01;
+    fov = fov+camera_position;
+    camera.fov = fov;//fov是变量哦
+    camera.updateProjectionMatrix();
     renderer.render(scene, camera);
-    
-    loopAnimal =  requestAnimationFrame(animation);
 }
 
 //关闭循环

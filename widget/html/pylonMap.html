@@ -33,7 +33,7 @@
     apiready = function(){
         var map = api.require('bMap');
         var systemType = getSystemType();
-        if(systemType == ios){
+        if(systemType == 'ios'){
             //ios时初始化成功
             map.initMapSDK();
         }

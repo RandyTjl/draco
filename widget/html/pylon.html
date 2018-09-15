@@ -76,14 +76,13 @@
     var camera_position = 0;
     $api.addEvt($api.byId('canvas-frame'), 'dblclick', function(){
         if(dbl == 0){
-            camera_position = 100;
-            closeThree();
+            camera_position = -20;
             cameraPosition(camera_position);
             dbl = 1;
         }else{
-            dbl = 0;
-            closeThree();
-            animation();
+            camera_position = 20;
+            cameraPosition(camera_position);
+            dbl = 1;
         }
     });
 
