@@ -32,9 +32,12 @@
 <script type="text/javascript">
     apiready = function(){
         var map = api.require('bMap');
+        var systemType = getSystemType();
+        if(systemType == ios){
+            //ios时初始化成功
+            map.initMapSDK();
+        }
 
-        //初始化成功
-        map.initMapSDK();
         //打开地图
         map.open({
             center: {

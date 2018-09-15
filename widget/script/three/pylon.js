@@ -4,6 +4,7 @@ var camera;
 var scene;
 var light;
 var t = 0;
+var loopAnimal = ''; //循环动画
 
 //初始化画布
 function initThree(id) {
@@ -126,7 +127,7 @@ function threeStart(id,data) {
 }
 
 //动漫特殊效果
-function animation(camera_position){
+function animation(){
     //renderer.clear();
     cameraRotate();
     renderer.render(scene, camera);
@@ -154,6 +155,17 @@ function cameraPosition(camera_position){
     
     loopAnimal =  requestAnimationFrame(animation);
 }
+
+//关闭循环
+function closeThree() {
+    if(renderer){
+        renderer.clear();
+        renderer = '';
+        cancelAnimationFrame(loopAnimal);
+    }
+    
+}
+
 
 
 

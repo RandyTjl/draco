@@ -162,6 +162,10 @@ function pylonShow(pylon) {
             latitude:pylon.latitude,
         }
     });
-    
+}
+
+function getSystemType() {
+    var systemType = api.systemType;
+    return systemType;
 }
 
