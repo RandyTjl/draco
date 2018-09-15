@@ -6,6 +6,7 @@ var light;
 var t = 0;
 var loopAnimal = ''; //循环动画
 var fov = 70; //摄像机远近
+var myPlane='';
 
 //初始化画布
 function initThree(id) {
@@ -42,10 +43,18 @@ function initLight() {
     /* light = new THREE.AmbientLight(0xBEBEBE);
      light.position.set(100, 100, 200);
      scene.add(light);*/
-
-    light = new THREE.DirectionalLight(0xFF0000,1);
+    
+    light = new THREE.DirectionalLight(0xffffff);
     // 位置不同，方向光作用于物体的面也不同，看到的物体各个面的颜色也不一样
-    light.position.set(1,0,0);
+    light.position.set(200,200,0);
+    /*light.castShadow = true;
+    light.target = myPlane;
+    light.shadow.camera.near = 0;
+    light.shadow.camera.far = 400;
+    light.shadow.camera.left = -220;
+    light.shadow.camera.right = 220;
+    light.shadow.camera.top = 220;
+    light.shadow.camera.bottom = -220;*/
     scene.add(light);
 
     /*light = new THREE.PointLight(0x00FF00);
@@ -122,6 +131,7 @@ function threeStart(id,data) {
     initThree(id);
     initCamera();
     initScene();
+    Plane();
     initLight();
     initObject(data);
     animation();
@@ -163,6 +173,50 @@ function closeThree() {
     
 }
 
+//平面四边形
+function Plane() {
+    var geometry = new THREE.Geometry();
+    //材质
+    var material = new THREE.MeshBasicMaterial({color:0xFFC125});
+    
+    geometry.vertices.push(
+        new THREE.Vector3( -400,  0, 0 ),
+        new THREE.Vector3( 0, 0, -400 ),
+        new THREE.Vector3( 400, 0, 0 ),
+        new THREE.Vector3( 0, 0, 400 )
+    );
+    
+    geometry.faces.push(
+        new THREE.Face3( 2, 1, 0 ),
+        new THREE.Face3( 0, 3, 2 )
+    );
+  
+    myPlane = new THREE.Mesh( geometry,material );
+    scene.add( myPlane );
+}
+
+
+function x(){
+    var geometry = new THREE.Geometry();
+    geometry.vertices.push( new THREE.Vector3( 0, 0, 0 ) );
+    geometry.vertices.push( new THREE.Vector3( 1000, 0, 0 ) );
+    var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2 } ) );
+    scene.add( line );
+}
+function y(){
+    var geometry = new THREE.Geometry();
+    geometry.vertices.push( new THREE.Vector3( 0, 0, 0 ) );
+    geometry.vertices.push( new THREE.Vector3( 0, 1000, 0 ) );
+    var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x00ae00, opacity: 0.2 } ) );
+    scene.add( line );
+}
+function z(){
+    var geometry = new THREE.Geometry();
+    geometry.vertices.push( new THREE.Vector3( 0, 0, 0 ) );
+    geometry.vertices.push( new THREE.Vector3( 0, 0, 1000 ) );
+    var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2 } ) );
+    scene.add( line );
+}
 
 
 
