@@ -24,11 +24,23 @@
 <script>
 apiready = function(){
     var type = api.pageParam.type;
-    getPylon()
+    var bMap = api.require('bMap');
+    bMap.getLocation({
+        accuracy: '100m',
+        autoStop: true,
+        filter: 1
+    }, function(ret, err) {
+        if (ret.status) {
+            getPylon(type,ret.lon,ret.lat)
+        } else {
+            api.alert({ title: '错误', msg:err.msg});
+        }
+    });
+
 }
 
-function getPylon(type) {
-    var url = "/pylons?type="+type;
+function getPylon(type,longitude,latitude) {
+    var url = "/pylons?type="+type+"&longitude="+longitude+"&latitude="+latitude;
     var method = "GET";
     ajaxJson(url,method,'',function (ret) {
         if(ret.code == 200){

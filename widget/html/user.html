@@ -93,11 +93,25 @@ function logout() {
     }, function(ret, err) {
         var index = ret.buttonIndex;
         if(index == 1){
-            $api.setStorage('apiToken','');
-            $api.setStorage('user','');
-            //退出应用
-            api.closeWidget({
-                silent: true
+            var user = $api.getStorage('user');
+            var url = "/auth/user_id";
+            var data={
+                user_id:user.id,
+            };
+            ajaxForm(url,"post",data,function (ret) {
+                if(ret.code == 200){
+                    $api.setStorage('apiToken','');
+                    $api.setStorage('user','');
+                    //退出应用
+                    api.closeWidget({
+                        silent: true
+                    });
+                }else{
+                    api.alert({
+                        title: '操作失败',
+                        msg: ret.message,
+                    });
+                }
             });
         }
     });
