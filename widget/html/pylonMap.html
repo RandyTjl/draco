@@ -45,12 +45,18 @@
                 lat: api.pageParam.latitude
             },
             zoomLevel: 18,
-            showUserLocation: true,
-            //fixedOn: api.frameName,
+            showUserLocation: false,
             fixed: true
         }, function(ret) {
             if (ret.status) {
-                alert('地图打开成功');
+                //标记坐标点
+                map.addAnnotations({
+                    annotations: [{
+                        id: 1,
+                        lon: api.pageParam.longitude,
+                        lat: api.pageParam.latitude
+                    }]
+                });
             }
         });
 

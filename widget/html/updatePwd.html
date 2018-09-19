@@ -73,7 +73,7 @@ $api.addEvt($api.byId('btn_save'),'click',function () {
         api.toast({msg: '两次新密码不一致', duration: 2000, location: 'center'});
         return false;
     }
-    var url = "/auth/login";
+    var url = "/auth/updatePwd";
     var data={
         email:user.email,
         oldPwd:oldPwd,
