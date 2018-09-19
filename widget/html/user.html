@@ -94,7 +94,7 @@ function logout() {
         var index = ret.buttonIndex;
         if(index == 1){
             var user = $api.getStorage('user');
-            var url = "/auth/user_id";
+            var url = "/auth/logout";
             var data={
                 user_id:user.id,
             };
