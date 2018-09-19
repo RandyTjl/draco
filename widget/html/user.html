@@ -6,31 +6,63 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>用户中心</title>
 </head>
+<style>
+    .header-center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+        text-align: center;
+    }
+</style>
 <link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
 <body>
-<section class="aui-grid aui-margin-b-15">
-    <div class="aui-row">
-        <div class="aui-col-xs-4">
-            <div class="aui-badge">88</div>
-            <i class="aui-iconfont aui-icon-home"></i>
-            <div class="aui-grid-label">首页</div>
-        </div>
-        <div class="aui-col-xs-4">
-            <i class="aui-iconfont aui-icon-gear"></i>
-            <div class="aui-grid-label">设置</div>
-        </div>
-
-        <div class="aui-col-xs-4">
-            <i class="aui-iconfont aui-icon-calendar"></i>
-            <div class="aui-grid-label">日历</div>
-        </div>
-        <div class="aui-col-xs-4">
-            <div class="aui-badge"></div>
-            <i class="aui-iconfont aui-icon-date"></i>
-            <div class="aui-grid-label">日期</div>
+<section class="aui-content">
+    <div class="aui-card-list">
+        <div class="aui-card-list-content" style="height: 10rem" >
+            <div class="aui-card-list-user-avatar header-center" >
+                <img src="http://www.auicss.com/aui2.0/image/l2.png" class="aui-img-round" style="width: 2rem;height: 2rem" />
+                <span>randy</span>
+            </div>
         </div>
     </div>
 </section>
+<div class="aui-content aui-margin-b-15">
+    <ul class="aui-list aui-list-in">
+        <li class="aui-list-header" style="font-size: 1rem">
+            个人中心
+        </li>
+        <li class="aui-list-item aui-list-item-middle" onclick="updatePwd()">
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-title">修改密码</div>
+            </div>
+        </li>
+        <li class="aui-list-item aui-list-item-middle" onclick="logout()">
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-title">退&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出</div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="aui-content aui-margin-b-15">
+    <ul class="aui-list aui-list-in">
+        <li class="aui-list-header" style="font-size: 1rem">
+            电塔
+        </li>
+        <li class="aui-list-item" onclick="pylon_list('nearby')">
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-title">附近电塔</div>
+            </div>
+        </li>
+        <li class="aui-list-item" onclick="pylon_list('abnormal')">
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-title">异常电塔</div>
+            </div>
+        </li>
+    </ul>
+</div>
+
 
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
@@ -41,9 +73,46 @@
 apiready = function(){
 
 }
+//修改密码
+function updatePwd() {
+    var name = "updatePwd";
+    var url = "./updatePwd.html";
+    api.openWin({
+        name: name,
+        url: url,
+        pageParam: {}
+    });
+}
 
+//登出
+function logout() {
+    api.confirm({
+        title: '退出',
+        msg: '你是确定退出系统',
+        buttons: ['确定', '取消']
+    }, function(ret, err) {
+        var index = ret.buttonIndex;
+        if(index == 1){
+            $api.setStorage('apiToken','');
+            $api.setStorage('user','');
+            //退出应用
+            api.closeWidget({
+                silent: true
+            });
+        }
+    });
+}    
 
-
+//电塔列表
+function pylon_list(type) {
+    api.openWin({
+        name: 'pylon_list',
+        url: './pylon_list.html',
+        pageParam: {
+            type: type,
+        }
+    })
+}
 
 </script>
 </html>

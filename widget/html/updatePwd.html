@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+	  <link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/tang.css" />
+    <title>登录</title>
+</head>
+<body>
+<header class="aui-bar aui-bar-nav" id="aui-header">
+    <a class="aui-btn aui-pull-left"  onclick="returnWin()">
+        <span class="aui-iconfont aui-icon-left"></span>
+    </a>
+    <div class="aui-title" >修改密码</div>
+</header>
+<div class="aui-content">
+  <div class=" aui-margin-b-15 aui-padded-t-15">
+      <ul class="aui-list aui-form-list tang-form-list">
+          <li class="aui-list-item">
+              <div class="aui-list-item-inner" style="min-height:2.5rem">
+                  <div class="aui-list-item-label-icon">
+                      <i class="aui-iconfont aui-icon-lock"></i>
+                  </div>
+                  <div class="aui-list-item-input">
+                      <input type="text" placeholder="旧密码" name="oldPwd" id="oldPwd">
+                  </div>
+              </div>
+          </li>
+          <li class="aui-list-item">
+              <div class="aui-list-item-inner" style="min-height:2.5rem">
+                  <div class="aui-list-item-label-icon">
+                      <i class="aui-iconfont aui-icon-lock"></i>
+                  </div>
+                  <div class="aui-list-item-input">
+                      <input type="text" placeholder="新密码" name="newPwd" id="newPwd">
+                  </div>
+              </div>
+          </li>
+          <li class="aui-list-item">
+              <div class="aui-list-item-inner" style="min-height:2.5rem">
+                  <div class="aui-list-item-label-icon">
+                      <i class="aui-iconfont aui-icon-lock"></i>
+                  </div>
+                  <div class="aui-list-item-input">
+                      <input type="text" placeholder="确认密码" name="newPwd1" id="newPwd1">
+                  </div>
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div style="margin:0 1.5em">
+    <div class="aui-btn aui-btn-info aui-btn-block  " id="btn_save">保存</div>
+  </div>
+</div>
+<script language=javascript src='../script/config.js'></script>
+<script language=javascript src='../script/api.js'></script>
+<script language=javascript src='../script/common.js'></script>
+<script>
+apiready = function(){
+
+}
+
+//保存修改密码
+$api.addEvt($api.byId('btn_save'),'click',function () {
+
+    var user = $api.getStorage('user');
+    var oldPwd = $api.val($api.byId('oldPwd'));
+    var newPwd = $api.val($api.byId('newPwd'));
+    var newPwd1 = $api.val($api.byId('newPwd1'));
+    if(oldPwd == '' || oldPwd == undefined){
+        api.toast({msg: '两次新密码不一致', duration: 2000, location: 'center'});
+        return false;
+    }
+    var url = "/auth/login";
+    var data={
+        email:user.email,
+        oldPwd:oldPwd,
+        newPwd:newPwd,
+        newPwd1:newPwd1,
+    };
+    ajaxForm(url,"post",data,function (ret) {
+        if(ret.code == 200){
+            api.alert({
+                title: '操作',
+                msg: ret.message,
+            }, function(ret, err) {
+                $api.setStorage('apiToken','');
+                $api.setStorage('user','');
+                fnOpenLogin();
+            });
+        }else{
+            api.alert({
+                title: '操作失败',
+                msg: ret.message,
+            });
+        }
+    });
+})
+
+
+</script>
+</body>
+</html>
